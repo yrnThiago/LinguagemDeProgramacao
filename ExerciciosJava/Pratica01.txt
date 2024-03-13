@@ -1,0 +1,118 @@
+public class Exercicio_1 {
+    public static void main(String[] args) {
+        
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(i);
+        }
+
+    }
+}
+
+public class Exercicio_2 {
+    
+    public static void main(String[] args) {
+        
+        int i = 1;
+        while(true) {
+            if (i == 6) break;
+
+            System.out.println(i);
+            i++;
+        }
+
+    }
+}
+
+public class Exercicio_3 {
+    
+    public static void main(String[] args) {
+        
+        int i = 1;
+        do {
+            System.out.println(i);
+            i++;
+        } while (i <= 5);
+
+    }
+}
+
+public class Exercicio_4 {
+    
+    public static void main(String[] args) {
+        
+        for (int i = 0; i < 15; i++) {
+            if (i % 2 == 0) System.out.println(i);
+        }
+
+    }
+}
+
+public class Exercicio_5 {
+    
+    public static void main(String[] args) {
+        
+        int soma = 0;
+        for (int i = 0; i <= 10; i++) {
+            soma += i;
+        }
+
+        System.out.println(soma);
+
+    }
+}
+
+public class Exercicio_6 {
+    
+
+    public static void main(String[] args) {
+        
+        int soma = 0;
+        int cont = 0;
+        for (int i = 0; i <= 100; i++) {
+            if (i % 2 != 0) {
+                soma += i;
+                cont++;
+            }
+        }
+
+        double media = soma / cont;
+
+        System.out.println(media);
+
+    }
+}
+
+import javax.swing.JOptionPane;
+
+public class Exercicio_7 {
+    
+    public static void main(String[] args) {
+
+        while (true){
+            String nome = JOptionPane.showInputDialog("Qual o seu nome: ");
+
+            if (nome != null && nome.equals("") == false) {
+                JOptionPane.showMessageDialog(null, nome);
+                break;
+            }
+
+            JOptionPane.showMessageDialog(null, "Nome não encontrado, digite novamente...");
+        }
+
+    }
+}
+
+import javax.swing.JOptionPane;
+
+public class Exercicio_8 {
+
+    public static void main(String[] args) {
+        
+        String text = JOptionPane.showInputDialog("Digite um número: ");
+        String res = (Integer.parseInt(text) % 2 == 0)? "Par" : "Ímpar"; 
+
+        JOptionPane.showMessageDialog(null, res);
+
+    }
+    
+}
