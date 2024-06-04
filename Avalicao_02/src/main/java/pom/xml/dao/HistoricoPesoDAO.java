@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pom.xml.factory.ConnectionFactory;
+import pom.xml.modelo.Aluno;
 import pom.xml.modelo.HistoricoPeso;
 
 public class HistoricoPesoDAO {
@@ -40,6 +41,29 @@ public class HistoricoPesoDAO {
 
         return historicos;
     }
+
+    public HistoricoPeso pegaHistoricoPorId (int id) {
+        String sql = "SELECT * FROM historicopeso WHERE ID = " + id;
+        HistoricoPeso historico = null;
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                int historicoPesoId = resultSet.getInt("ID");
+                int alunoId = resultSet.getInt("aluno_id");
+                double alunoPeso = resultSet.getDouble("aluno_peso");
+                String dataPeso = resultSet.getString("peso_data");
+
+                historico = new HistoricoPeso(historicoPesoId, alunoId, dataPeso, alunoPeso);
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return historico;
+    }
+
 
     public List pegaHistoricos () {
         String sql = "SELECT * FROM historicopeso";
@@ -97,10 +121,28 @@ public class HistoricoPesoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean excluiHistoricoPorAlunoID(int id) {
+        String sql = "DELETE FROM historicopeso WHERE aluno_id = " + id;
+        boolean historicoFoiExcluido = false;
+        try {
+            Statement stmt = connection.createStatement();
+            int rowsAffected = stmt.executeUpdate(sql);
+            stmt.close();
+    
+            if (rowsAffected > 0) {
+                historicoFoiExcluido = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return historicoFoiExcluido;
+    }
     
 
     public boolean excluiHistoricoPorID(int id) {
-        String sql = "DELETE FROM historicopeso WHERE aluno_id = " + id;
+        String sql = "DELETE FROM historicopeso WHERE ID = " + id;
         boolean alunoFoiExcluido = false;
         try {
             Statement stmt = connection.createStatement();

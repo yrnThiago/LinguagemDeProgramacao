@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
+import pom.xml.dao.AlunoDAO;
 import pom.xml.dao.HistoricoPesoDAO;
 import pom.xml.modelo.Aluno;
 import pom.xml.modelo.HistoricoPeso;
@@ -62,6 +64,7 @@ public class HistoricoPesoGUI extends JFrame implements ActionListener {
                         String dataPeso = (String) tableModel.getValueAt(selectedRow, 2);
 
                         selecionaHistoricoAluno(alunoPeso, historicoID, dataPeso);
+                        consultar(historicoID);
                     }
                 }
             }
@@ -81,6 +84,14 @@ public class HistoricoPesoGUI extends JFrame implements ActionListener {
         this.alunoPeso = peso;
         this.historicoId = historicoID;
         this.dataPeso = dataPeso;
+    }
+    
+    private void consultar(int id) {
+        HistoricoPesoDAO dao = new HistoricoPesoDAO();
+        HistoricoPeso historico = dao.pegaHistoricoPorId(this.historicoId);
+        HistoricoDetalhes detalhesHistorico = new HistoricoDetalhes();
+        detalhesHistorico.detalhesHistoricoPorID(historico, this.historicoId);
+        detalhesHistorico.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {

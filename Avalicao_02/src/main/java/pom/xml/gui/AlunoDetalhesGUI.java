@@ -178,7 +178,7 @@ public class AlunoDetalhesGUI extends JFrame implements ActionListener {
             HistoricoPeso historicoPeso = new HistoricoPeso(0, this.aluno.getID(), "", 0);
 
             boolean alunoFoiExcluido = dao.excluiAlunoPorID(this.alunoId);
-            boolean historicoAlunoFoiExcluido = histDao.excluiHistoricoPorID(this.alunoId);
+            boolean historicoAlunoFoiExcluido = histDao.excluiHistoricoPorAlunoID(this.alunoId);
 
             File diretorio = new File("data/historicosAlunos/" + this.aluno.getNome());
             boolean arquivoAlunoFoiExcluido = historicoPeso.excluirDiretorioRecursivamente(diretorio);
@@ -191,12 +191,5 @@ public class AlunoDetalhesGUI extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Não foi possível excluir, tente novamente!", "ERRO", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            AlunoDetalhesGUI detalhesAluno = new AlunoDetalhesGUI();
-            detalhesAluno.setVisible(true);
-        });
     }
 }

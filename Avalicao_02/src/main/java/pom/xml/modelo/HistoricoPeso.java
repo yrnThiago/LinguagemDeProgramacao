@@ -86,8 +86,11 @@ public class HistoricoPeso {
                     excluirDiretorioRecursivamente(arquivo);
                 }
             }
+
+            return diretorio.delete();
         }
-        return diretorio.delete();
+        
+        return true;
     }
 
     public String getDataPeso() {
