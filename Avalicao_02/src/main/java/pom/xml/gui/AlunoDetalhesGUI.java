@@ -183,7 +183,7 @@ public class AlunoDetalhesGUI extends JFrame implements ActionListener {
             File diretorio = new File("data/historicosAlunos/" + this.aluno.getNome());
             boolean arquivoAlunoFoiExcluido = historicoPeso.excluirDiretorioRecursivamente(diretorio);
             
-            if (alunoFoiExcluido && historicoAlunoFoiExcluido && arquivoAlunoFoiExcluido) {
+            if (alunoFoiExcluido) {
                 JOptionPane.showMessageDialog(this, "Aluno ID: " + this.alunoId + " excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
