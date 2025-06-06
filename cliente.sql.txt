@@ -1,0 +1,26 @@
+use venda;
+CREATE TABLE cliente (
+       cli_codigo           INT auto_increment,
+       cli_nome             VARCHAR(30) NOT NULL,
+       cli_endereco         VARCHAR(30),
+       cli_cidade           VARCHAR(30),
+       cli_cep              VARCHAR(10),
+       cli_estado           VARCHAR(2),
+       cli_cpf              VARCHAR(11),
+       PRIMARY KEY (cli_codigo)
+);
+
+insert into cliente (cli_nome,cli_endereco,cli_cidade,cli_cep,cli_estado,cli_cpf)
+values('Ana','Rua 17 n.19','Niterói', '24358310','RJ','11111111111'),
+('Flávio','Áv. Pres. Vargas 10','São Paulo','22763931','SP','2253412693'),
+('Jorge','Rua Caiapo 13','Curitiba','30078500','PR','14512798349'),
+('Lúcia','Rua Itabira 123 Loja 9','Belo Horizonte','22124391','MG','2831521393'), 
+('Maurício','Av. Paulista 1236 sl/2345','São Paulo','3012683','SP','3281698574'),
+('Rodolfo','Largo da Lapa 27 sobrado','Rio de Janeiro','30078900','RJ','1283512823'),
+('Beth','Av.Climério n. 45','São Paulo','25679300','SP','3248512673'),
+('Paulo','TV. Moraes c/3','Londrina','0','PR','3284822332'),
+('Lívio','Av. Beira Mar n. 1256','Florianópolis','300077500','SC','12736571'),
+('Susana','Rua Lopes Mendes 12','Niterói','30046500','RJ','2176357123'),
+('Renato','Rua Meireles n.123 sl.345','São Paulo','30225900','SP','1327657112'),
+('Sebastião','Rua da Igreja n.10','Uberaba','30438700','MG','3217654721'),
+('José','Quadra 3 bl. 3 sl. 1003','Brasília','22841650','DF','21763576123');  
